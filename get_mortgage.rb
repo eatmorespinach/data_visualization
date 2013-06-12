@@ -15,17 +15,14 @@ File.open('listing_mortgage.txt', 'w') do |file|
   	config.noblanks
 	end
 
-	all_monthly_payments = data.css(".monthly-payment").text.strip
+	all_monthly_payments = data.css(".monthly-payment").text.strip #all_monthly_payments is a giant string
 	
-	payments = all_monthly_payments.split("Est. ")
+	payments = all_monthly_payments.split("Est. ") #.split divides giant string into substrings in an array
 
-	pmts = payments.join("\n")
+	pmts = payments.join("\n") #.join with \n allows each value to return on a new line
 
-	# puts pmts
+	file.puts "#{pmts}"
 
-	# puts pmts.class
-
-		file.puts "#{pmts}"
 end
 
 
@@ -55,9 +52,3 @@ end
 
 		#puts listing
 	#end
-
-
-
-
-
-
