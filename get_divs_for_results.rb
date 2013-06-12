@@ -15,19 +15,19 @@ File.open('divs_for_results.html', 'w') do |html|
     end
   end
 
+  for i in 0..2 do
+		puts html.write("<div class='individual_listing'\n")
+		puts html.write("<p> #{listing_w_results} </p>\n")
+		puts html.write("<p> Mortgage: $824/mo </p>\n")
+		puts html.write("</div>\n")
+  end
 		#some_variable
 		#txt.puts(some_variable)
-	end
 end
 
 
-<div class='bar_wrapper' data-name='new york city'>
-  <div class='bar' style='height:0.0%;'></div>
-</div>
-<div class='bar_wrapper' data-name='ad'>
-  <div class='bar' style='height:11.764705882352942%;'></div>
-</div>
-<div class='bar_wrapper' data-name='los angeles'>
-  <div class='bar' style='height:39.411764705882355%;'></div>
-</div>
+
+
+#WHATT ROBERT SHOWED ME. inject.
+# Puts ary.inject("<html><body>") {|previous, s| previous + "<p>#{s}: #{s.length}</p>\n"} + "</body></html>"
 
