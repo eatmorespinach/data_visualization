@@ -1,43 +1,52 @@
 require 'nokogiri'
 require 'open-uri'
 
-url = "http://www.zillow.com/homes/for_sale/Seattle-WA/pmf,pf_pt/16037_rid/0-200000_price/0-754_mp/days_sort/47.688735,-121.956825,47.44829,-122.735481_rect/10_zm/"
+url = "http://ruby.bastardsbook.com/files/hello-webpage.html"
 
-data = Nokogiri::HTML(open(url))
+page = Nokogiri::HTML(open(url))
 
-listing = data.css("#container")
 
-listing.each do |listing|
-	puts listing.at_css(".price").text
 
-	puts listing.at_css(".monthly-payment").text	
-end
+puts page.css('title')[0].name
+
+links = page.css('a')
+
+
+puts links[0]["href"]
+
+
+
+
+
+
+
+
+#puts street_address = data.css(".streetAddress").text.strip NOT WORKING
+
+#2nd try at trying to pull the address
+#puts Hash[doc.xpath("//span itemprop/@*[Address(name())]").map{|e| [e.name]}]
+
+
+
+
+
+# all_prices.each do |price|
+# 	puts price.css(".price").text.strip
+
+# 		all_monthly_payments.each do |payments|
+# 			puts payments.css(".monthly-payment").text		
+# 		end
+# 	end
+	#puts all_listings.class
+	
+	
+
 
 
 # listing_price = data.css(".price").text.strip
 # listing_monthly_payment = data.css(".monthly-payment").text.strip
 
 #zillow = zillow.split("For Sale:")
-
-
-
-# zillow.each do |listing|
-# 	puts listing.at_css('.price').text
-# end
-
-
-# puts data.at_css("#price").text.strip
-
-# puts data.at_css("#time").text.strip
-
-# puts data.at_css("#stock").text.strip 
-
-
-
-
-
-
-
 
 
 
