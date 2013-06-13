@@ -1,35 +1,55 @@
 require 'nokogiri'
 require 'open-uri'
-
-#require 'rubygems'
-
-
-#I'm trying to write divs
+require 'rubygems'
 
 
 File.open('divs_for_results.html', 'w') do |html|
-	listing_w_results = []
+	listing_w_results_price = []
+	listing_w_results_mortgage = []
 	File.open('listing_price.txt', 'r') do |txt|
 		while (line = txt.gets)
-			listing_w_results << line
+			listing_w_results_price << line
     end
   end
+  
+  File.open('listing_mortgage.txt', 'r') do |txtmortgage|
+  	while (line = txtmortgage.gets)
+  		listing_w_results_mortgage << line
+  	end
+  end
 
-  listing_w_results.each do |x|
+	hash = {}
 
-		puts html.write("<div class='individual_listing'>\n")
-		puts html.write("<p> #{x} </p>\n")
-		puts html.write("<p> Mortgage: $824/mo </p>\n")
-		puts html.write("</div>\n")
-
+	listing_w_results_price.each_with_index.each do |price, mortgage|
+		hash[price] = listing_w_results_mortgage[mortgage]
 	end
-		#some_variable
-		#txt.puts(some_variable)
+puts hash
+
+
+
+
+
+
+
+
+	# puts combine.each do |price, mortgage|
+
+
+		# puts html.write("<div class='individual_listing'>\n")
+		# puts html.write("<p> #{price} </p>\n")
+		# puts html.write("<p> #{mortgage} </p>\n")
+		# puts html.write("</div>\n")
+
+
+
+	#end
+
+		
 end
 
 
 
 
 #WHATT ROBERT SHOWED ME. inject.
-# Puts ary.inject("<html><body>") {|previous, s| previous + "<p>#{s}: #{s.length}</p>\n"} + "</body></html>"
+#Puts ary.inject("<html><body>") {|previous, s| previous + "<p>#{s}: #{s.length}</p>\n"} + "</body></html>"
 
