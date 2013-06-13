@@ -23,26 +23,22 @@ File.open('divs_for_results.html', 'w') do |html|
 	listing_w_results_price.each_with_index.each do |price, mortgage|
 		hash[price] = listing_w_results_mortgage[mortgage]
 	end
-puts hash
 
+# hash.keys.sort.each do |key|
+#   puts "#{key}-----"
+#   hash[key].each { |val| puts val }
+#   puts "#{val}"
+# end
 
+hash.each do |price, mortgage|
 
+		puts html.write("<div class='individual_listing'>\n")
+		puts html.write("<p> #{price} </p>\n")
+		puts html.write("<p> #{mortgage} </p>\n")
+		puts html.write("</div>\n")
 
-
-
-
-
-	# puts combine.each do |price, mortgage|
-
-
-		# puts html.write("<div class='individual_listing'>\n")
-		# puts html.write("<p> #{price} </p>\n")
-		# puts html.write("<p> #{mortgage} </p>\n")
-		# puts html.write("</div>\n")
-
-
-
-	#end
+	end
+	
 
 		
 end
