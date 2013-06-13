@@ -16,7 +16,7 @@ File.open('divs_for_results.html', 'w') do |html|
   end
 
   for i in 0..2 do
-		puts html.write("<div class='individual_listing'\n")
+		puts html.write("<div class='individual_listing'>\n")
 		puts html.write("<p> #{listing_w_results} </p>\n")
 		puts html.write("<p> Mortgage: $824/mo </p>\n")
 		puts html.write("</div>\n")
