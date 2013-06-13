@@ -1,21 +1,23 @@
 
 
 
-head {
+header {
 	
 }
+
 
 body {
 	background-color: blue;
 
 }
 
-#header {
-
+#container {
+	margin: 0px auto;
+	width: 960px;
+	background-color: red;
 }
 
-
-h1 h2 h3 {
-	font-color: red;
-	font-size: 30px;
+h1 {
+	color: yellow;
+	font-size: 40px;
 }
