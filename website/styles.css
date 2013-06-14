@@ -12,7 +12,7 @@ body {
 }
 
 #container {
-	margin: 0px auto;
+	margin: 50px auto;
 	width: 960px;
 	background-color: red;
 }
@@ -20,4 +20,12 @@ body {
 h1 {
 	color: yellow;
 	font-size: 40px;
+	margin:0px auto;
+}
+
+
+#right_side {
+	margin-left:500px;
+	width: 400px;
+	background-color: green;
 }
