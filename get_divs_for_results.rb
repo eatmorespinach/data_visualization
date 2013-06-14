@@ -3,47 +3,53 @@ require 'open-uri'
 require 'rubygems'
 
 
+listings = []
+
+File.open('listing_price.txt', 'r') do |price|
+	while (line = price.gets)
+		listings << {:price => line.strip.squeeze}
+  end
+end
+
+File.open('listing_mortgage.txt', 'r') do |mortgage|
+  i = 0
+  while (line = mortgage.gets)
+		listings[i][:mortgage] = line.strip.squeeze
+  	i+= 1 #could use each_with_index later
+  end
+end
+
+File.open('listing_address.txt', 'r') do |address|
+  i = 0
+  while (line = address.gets)
+		listings[i][:address] = line.strip.squeeze
+  	i+= 1 #could use each_with_index later
+  end
+end
+
+#listing now has a bunch of data. 
+
+#loop over the hash and refer to them by name. 
+
+
 File.open('divs_for_results.html', 'w') do |html|
-	listing_w_results_price = []
-	listing_w_results_mortgage = []
-	File.open('listing_price.txt', 'r') do |txt|
-		while (line = txt.gets)
-			listing_w_results_price << line
-    end
-  end
-  
-  File.open('listing_mortgage.txt', 'r') do |txtmortgage|
-  	while (line = txtmortgage.gets)
-  		listing_w_results_mortgage << line
-  	end
-  end
 
-	hash = {}
+	listings.each do |house| #address
 
-	listing_w_results_price.each_with_index.each do |price, mortgage|
-		hash[price] = listing_w_results_mortgage[mortgage]
-	end
-
-# hash.keys.sort.each do |key|
-#   puts "#{key}-----"
-#   hash[key].each { |val| puts val }
-#   puts "#{val}"
-# end
-
-hash.each do |price, mortgage|
-
-		puts html.write("<div class='individual_listing'>\n")
-		puts html.write("<p> #{price} </p>\n")
-		puts html.write("<p> #{mortgage} </p>\n")
-		puts html.write("</div>\n")
+		html.write("<div class='individual_listing'>\n")
+		html.write("<p> #{house[:price]} </p>\n")
+		html.write("<p> #{house[:address]} </p>\n")
+		html.write("<p> #{house[:mortgage]} </p>\n")
+		html.write("</div>\n")
 
 	end
-	
-
 		
 end
 
 
+# {{:address => "519 W Roy St, Seattle, WA" {:price => "500,000", :mortgage => "Mortgage: $410/mo"}}
+#  {:address => "20 E Bob St, Seattle, WA" {:price => "500,000", :mortgage => "Mortgage: $410/mo"}}
+#  }
 
 
 #WHATT ROBERT SHOWED ME. inject.
